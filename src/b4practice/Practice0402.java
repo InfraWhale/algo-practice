@@ -3,6 +3,7 @@ package b4practice;
 public class Practice0402 {
 
   public static void main(String[] args) {
+
     Diet[] diet = new Diet[5];
 
     diet[0] = new Diet(99.7, "2022-06-04");
