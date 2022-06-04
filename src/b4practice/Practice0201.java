@@ -1,0 +1,10 @@
+package b4practice;
+
+public class Practice0201 {
+
+  public static void main(String[] args) {
+    for (int i = 1; i <= 5; i++)
+      System.out.println(i);
+  }
+
+}
