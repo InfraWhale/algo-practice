@@ -1,4 +1,4 @@
-package chap02;
+package chap02; // 배열 요솟값의 합계 구하기
 
 public class SumOfArray {
   public static void main(String[] args) {
