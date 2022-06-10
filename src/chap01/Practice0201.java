@@ -20,7 +20,7 @@ public class Practice0201 {
 
 
     if (a == 0 || b == 0) { // a 또는 b가 0일경우
-      System.out.println("첫번째 수와 두번째 수는 자연수로 입력해주세요");  // 에러 메시지를 띄운다
+      System.out.println("첫번째 수와 두번째 수는 자연수로 입력해주세요"); // 에러 메시지를 띄운다
     } else { // a,b 둘다 0이 아닐경우
 
       while (a != b) { // a와 b가 같은값이 나오면 반복문이 종료된다.
