@@ -1,4 +1,4 @@
-package chap8;
+package chap08;
 
 public class RecursiveCallTrace {
   // 인수 n의 계승을 구하는 메소드

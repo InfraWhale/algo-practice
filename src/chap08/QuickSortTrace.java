@@ -1,4 +1,4 @@
-package chap8;
+package chap08;
 
 public class QuickSortTrace {
   // 배열 내용을 표시하는 메소드

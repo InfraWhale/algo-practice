@@ -1,4 +1,4 @@
-package chap8;
+package chap08;
 
 public class QuickSort {
   // 배열 내용을 표시하는 메소드
@@ -54,7 +54,7 @@ public class QuickSort {
 
   // 배열 a[start]~a[end]를 오름차순으로 정렬하는 메소드
   public static void sortArray(int[] a, int start, int end) {
-    int pivot; // 배열을 그룹으로 나누는 기준값의 인덱스 위치
+    int pivot; //배열을 그룹으로 나누는 기준값의 인덱스 위치
 
     // 배열 요소가 2개 이상인 경우 정렬 처리 진행
     if (start < end) {
