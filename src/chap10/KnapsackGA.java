@@ -1,5 +1,7 @@
 package chap10;
 
+import java.util.Scanner;
+
 public class KnapsackGA {
 
   public static final int KNAP_MAX = 6;          // 배낭의 최대 무게
@@ -107,21 +109,118 @@ public class KnapsackGA {
     }
   }
 
+  // 도태를 수행하는 메소드
+  public static void selectIndividual() {
+    int ind, item; // 루프 카운터
+
+    // 적응도 상위 50%를 하위 50%로 복사(하위 50%를 도태시킴)
+    for (ind = 0; ind < IND_NUM / 2; ind++) {
+      for (item = 0; item < ITEM_NUM; item++) {
+        indGene[ind + IND_NUM / 2][item] = indGene[ind][item];
+      }
+    }
+    System.out.printf("하위 50%%를 도태시켰습니다.\n");
+  }
+
+  // 교차를 수행하는 함수
+  public static void crossoverIndividual() {
+    int ind, item; // 루프 카운터
+    int crossoverPoint; // 교차 수행 위치
+    int tmp; // 임시 변수
+
+    // 하위 50%에 복사한 개체를 대상으로 함
+    for (ind = IND_NUM / 2; ind < (IND_NUM - 1); ind+= 2) {
+      // 교차할 위치를 임의로 결정
+      crossoverPoint = (int)(Math.random() * 10000) % (ITEM_NUM - 1) + 1;
+      for (item = crossoverPoint; item < ITEM_NUM; item++) {
+        // 이웃 개체와 교차 수행
+        tmp = indGene[ind][item];
+        indGene[ind][item] = indGene[ind + 1][item];
+        indGene[ind + 1][item] = tmp;
+      }
+      System.out.printf("개체 %d와 %d를 %d의 위치에서 교차했습니다. \n", ind, ind + 1, crossoverPoint);
+    }
+  }
+
+
+  // 돌연변이를 만드는 메소드
+  public static void mutateIndividual() {
+    int ind, item; // 루프 카운터
+
+    // 하위 50%에 복사한 게체를 대상으로 함
+    for (ind = IND_NUM / 2; ind < IND_NUM; ind++) {
+      for (item = 0; item < ITEM_NUM; item++) {
+        // 미리 정해진 확률로 돌연변이 만들기
+        if (Math.random() <= MUTATE_RATE) {
+          // 유전자 패턴을 반전함
+          indGene[ind][item] ^= 1;
+          System.out.printf("개체 %d의 %d 위치에서 돌연변이를 만들었습니다. \n", ind, item);
+        }
+      }
+    }
+  }
+
   // 프로그램 실행의 시작점인 main 메소드
   public static void main(String[] args) {
+    int genMax; // 최대 세대
+    int item; // 루프 카운터
 
-    //    //배낭에 들어있는 물건을 조사하여 정답을 표시
-    //    System.out.println("<배낭에 들어 있는 물건을 조사>");
-    //    totalWeight = 0;
-    //    for (knap = KNAP_MAX; knap > 0; knap -= weight[item]) {
-    //      item = lastItem[knap];
-    //      System.out.printf("%dkg의 배낭에 마지막으로 넣은 물건은 %c입니다.\n", knap, name[item]);
-    //      totalWeight += weight[item];
-    //      System.out.printf(" %c, %dkg, %d원\n", name[item], weight[item], value[item]);
-    //      System.out.printf(" %dkg - %dkg = %dkg입니다. \n", knap, weight[item], knap - weight[item]);
-    //    }
-    //    System.out.println("\n<정답을 표시>");
-    //    System.out.printf("무게의 합계 = %dkg\n", totalWeight);
-    //    System.out.printf("가치의 최댓값 = %d원\n", maxValue[ITEM_NUM -1][KNAP_MAX]);
+    // 키보드로 최대 세대를 입력
+    Scanner scn = new Scanner(System.in);
+    System.out.printf("최대의 세대 = ");
+    genMax = scn.nextInt();
+    scn.close();
+
+    // 1세대 개체를 생성
+    indGeneration = 1;
+    createIndividual();
+
+    // 적응도를 계산
+    calcIndividual();
+
+    // 적응도가 큰 순서로 개체를 정렬
+    sortIndividual();
+
+    // 개체를 표시
+    showIndividual();
+
+    // 1세대씩 진화시키기
+    indGeneration++;
+    while (indGeneration <= genMax) {
+      // 적응도가 큰 순서로 개체를 정렬
+      sortIndividual();
+
+      //  도태시킴
+      selectIndividual();
+
+      // 교차시킴
+      crossoverIndividual();
+
+      // 돌연변이시킴
+      mutateIndividual();
+
+      // 적응도를 계산
+      calcIndividual();
+
+      // 적응도가 큰 순서로 개체를 정렬
+      sortIndividual();
+
+      // 개체를 표시
+      showIndividual();
+
+      // 다음 세대로 나아감
+      indGeneration++;
+    }
+
+    //적응도가 가장 높은 개체를 정답으로 표시
+    System.out.println("<배낭에 들어 있는 물건을 표시>");
+    for (item = 0; item < ITEM_NUM; item++) {
+      if (indGene[0][item] == 1) {
+        System.out.printf("%c, %dkg, %d원\n", itemname[item], itemWeight[item], itemValue[item]);
+      }
+    }
+    System.out.println("\n<정답을 표시>");
+    System.out.printf("무게의 합계 = %dkg\n", indWeight[0]);
+    System.out.printf("가치의 최댓값 = %d원\n", indValue[0]);
   }
 }
