@@ -4,10 +4,10 @@ using namespace std;
 typedef long long ll;
 
 int main() {
-ios::sync_with_stdio(false);
-cin.tie(NULL);
-string s = "923";
-s[0]++;
-cout << s << "\n"; // :23 - 아스키 코드상 9(081) 다음은 :(082) 
-return 0;
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	string s = "923";
+	s[0]++;
+	cout << s << "\n"; // :23 - 아스키 코드상 9(081) 다음은 :(082) 
+	return 0;
 }
