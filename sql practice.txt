@@ -72,3 +72,79 @@ where comm is null
 and mgr is not null
 and job in ('CLERK', 'MANAGER')
 and ename not like '_L%';
+
+6-1
+select 
+    empno,
+    rpad(substr(empno,1,2), length(empno), '*') as masking_empno,
+    ename,
+    rpad(substr(ename,1,2), length(ename), '*') as masking_ename
+from emp
+where length(ename) >= 5 and length(ename) < 6 ;
+
+6-2
+select 
+    empno,
+    ename,
+    sal,
+    trunc(sal/21.5, 2) as day_pay,
+    round(sal/21.5/8, 1) as time_pay
+from emp;
+
+6-3
+select 
+    empno,
+    ename,
+    hiredate,
+    to_char(next_day(add_months(hiredate, 3) ,'monday'), 'YYYY-MM-DD') as r_job,
+    nvl(to_char(comm), 'N/A') as comm
+from emp;
+
+6-4
+select 
+    empno,
+    ename,
+    mgr,
+    case
+        when mgr is null then '0000'
+        when substr(mgr, 1, 2) = 75 then '5555' 
+        when substr(mgr, 1, 2) = 76 then '6666' 
+        when substr(mgr, 1, 2) = 77 then '7777' 
+        when substr(mgr, 1, 2) = 78 then '8888'
+        else to_char(mgr)
+        end
+    as chg_mgr
+from emp;
+
+7-1
+select
+    deptno,
+    trunc(avg(sal)) as avg_sal,
+    max(sal) as max_sal,
+    min(sal) as min_sal,
+    count(*) as cnt
+from emp
+group by deptno;
+
+7-2
+select
+    job,
+    count(*)
+from emp
+group by job
+having count(*) >= 3;
+
+7-3
+select
+    extract(year from hiredate) as hire_year,
+    deptno,
+    count(*) as cnt
+from emp
+group by extract(year from hiredate), deptno;
+---------------------------------------------------------
+select
+    to_char(hiredate, 'YYYY') as hire_year,
+    deptno,
+    count(*) as cnt
+from emp
+group by to_char(hiredate, 'YYYY'), deptno;
