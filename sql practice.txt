@@ -148,3 +148,28 @@ select
     count(*) as cnt
 from emp
 group by to_char(hiredate, 'YYYY'), deptno;
+
+7-4
+select 
+    exist_comm,
+    count(*)
+from
+    (select 
+        case 
+            when comm is null then 'X'
+            else 'O'
+        end as exist_comm
+    from emp)
+group by exist_comm;
+
+7-5
+select 
+    deptno,
+    extract(year from hiredate) as hire_year,
+    count(*) as cnt,
+    max(sal) as max_sal,
+    sum(sal) as sum_sal,
+    avg(sal) as avg_sal
+from emp
+group by rollup(deptno, extract(year from hiredate));
+
