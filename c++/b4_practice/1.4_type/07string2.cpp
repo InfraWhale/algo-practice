@@ -19,15 +19,15 @@ int main(){
 	cout << a << " : " << a.size() << "\n";
 	
 	// size_t find (const string& str, size_t pos = 0);
-	auto it = a.find("love"); // 특정 문자열 위치 반환, 못찾으면 string::npos 반환 @@@@@@@@@@@@@@@@@@@@@@@@@@ 
+	auto it = a.find("love"); // 특정 문자열 위치 반환, 못찾으면 string::npos 반환
 	if (it != string::npos){
 		cout << "포함되어 있다." << '\n';
 	}
-	cout << it << '\n';
-	cout << string::npos << '\n';
+	cout << it << '\n'; // find로 인해 love의 첫글자 위치가 it에 저장됨 
+	cout << string::npos << '\n'; // 64비트 운영체제에서의 최대 정수값 가짐 
 	
 	// string substr (size_t pos = 0, size_t len = npos) const;
-	cout << a.substr(5, 2) << '\n';
+	cout << a.substr(5, 2) << '\n'; // 5번째부터 시작해서 2글자 추출 
 	
 	return 0;
 }
