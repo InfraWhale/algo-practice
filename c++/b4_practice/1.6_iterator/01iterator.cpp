@@ -19,7 +19,7 @@ int main(){
 	}
 	cout << '\n';
 	
-	for(vector<int>::iterator it = v.begin(); it != v.end(); it++){
+	for(vector<int>::iterator it = v.begin(); it != v.end(); it++){ //::는 스코프 지정자 
 		cout << *it << ' ';
 	}
 	
