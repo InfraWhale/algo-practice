@@ -1,23 +1,14 @@
-#include <bits/stdc++.h> // lower bound & upper bound 3
+#include<bits/stdc++.h> // lower bound & upper bound 3
 
 using namespace std;
-vector<int> v;
+typedef long long ll;
+
 int main(){
-	for(int i = 2; i <= 5; i++)v.push_back(i);
-	v.push_back(7);
-	// 2 3 4 5 7
-	cout << upper_bound(v.begin(), v.end(), 6) - v.begin() << "\n";
-	cout << lower_bound(v.begin(), v.end(), 6) - v.begin() << "\n";
-	cout << upper_bound(v.begin(), v.end(), 9) - v.begin() << "\n";
-	cout << lower_bound(v.begin(), v.end(), 9) - v.begin() << "\n";
-	cout << upper_bound(v.begin(), v.end(), 0) - v.begin() << "\n";
-	cout << lower_bound(v.begin(), v.end(), 0) - v.begin() << "\n";
-	/*
-	4
-	4
-	5
-	5
-	0
-	0
-	*/
+	vector<int> a {1, 2, 3, 3, 3, 4};
+	cout << &*lower_bound(a.begin(), a.end(), 3) - &*a.begin() << "\n";
+	
+	vector<int> b {0, 0, 0, 0};
+	cout << &*(b.begin() + 3) - &*b.begin() << '\n';
+	
+	return 0;
 }

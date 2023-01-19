@@ -4,10 +4,19 @@ using namespace std;
 typedef long long ll;
 
 int main(){
-	vector<int> a;
-	for(int i =1 ; i<= 3; i++)a.push_back(i);
-	for(int i =5 ; i<= 10; i++)a.push_back(i); // 1 2 3 5 6 7 8 9 10
+	vector<int> a {1, 2, 3, 3, 3, 4};
 	
-	cout << lower_bound(a.begin(), a.end(), 4) - a.begin() << "\n"; // 3 -> 4가 없으므로 4 이상인 첫번째 지점 반환 
+	cout << &*lower_bound(a.begin(), a.end(), 3)<< "\n";
+	cout << &*a.begin()<< "\n";
+	cout << &*(a.begin() + 1)<< "\n";
+	
 	return 0;
 }
+
+/*
+0xd21518
+0xd21510
+0xd21514
+*/
+
+// 주소값끼리 -를 하면 해당 주소값에서 몇번째에 이 요소가 들어있는지를 반환함 
