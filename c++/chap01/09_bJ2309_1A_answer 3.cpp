@@ -6,43 +6,35 @@ int n = 9, r = 7;
 void solve()
 {
 	int sum = 0;
-	for (int i = 0; i < r; i++)
-	{
+	for (int i = 0; i < r; i++) {
 		sum += a[i];
 	}
-	if (sum == 100)
-	{
+	if (sum == 100) {
 		sort(a, a + 7);
 		for (int i = 0; i < r; i++)
 			cout << a[i] << "\n";
 		exit(0); // 메인함수 자체 종료
 	}
 }
-void print()
-{
+void print() {
 	for (int i = 0; i < r; i++)
 		cout << a[i] << " ";
 	cout << "\n";
 }
-void makePermutaiton(int n, int r, int depth)
-{
-	if (r == depth)
-	{
+void makePermutaiton(int n, int r, int depth) {
+	if (r == depth) {
 		solve();
 		return;
 	}
-	for (int i = depth; i < n; i++)
-	{
+	for (int i = depth; i < n; i++) {
 		swap(a[i], a[depth]);
 		makePermutaiton(n, r, depth + 1);
 		swap(a[i], a[depth]);
 	}
 	return;
 }
-int main()
-{
-	for (int i = 0; i < n; i++)
-	{
+int main() {
+	for (int i = 0; i < n; i++) {
 		cin >> a[i];
 	}
 	makePermutaiton(n, r, 0);

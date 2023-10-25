@@ -1,4 +1,4 @@
-#include <bits/stdc++.h> // ¹éÁØ 2309 1-A Á¤´ä 
+#include <bits/stdc++.h> // ë°±ì¤€ 2309 1-A ì •ë‹µ 
 using namespace std;
 int a[9];
 int main() {
