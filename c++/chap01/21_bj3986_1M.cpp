@@ -1,8 +1,7 @@
 #include <bits/stdc++.h> // 백준 3986 1M
 using namespace std;
 
-int n, cnt;
-
+int n, cnt, a, b;
 string temp;
 
 int main() {
@@ -13,8 +12,26 @@ int main() {
     cin >> n;
 
     for(int i=0; i<n; i++) {
-        int A, B; //0: 닫힘, 1: 열림
         cin >> temp;
+        stack<char> stk;
+
+        for(int j=0; j < temp.length(); j++){
+            stk.push(temp[i]);    
+            
+            if(temp[i] == 'A') a++;
+            else if (temp[i] == 'B') b++;
+
+            if(a == 2) {
+                stk.pop();
+                if(stk.top() == 'B') break;
+                stk.pop();
+            } else if(b == 2) {
+                stk.pop();
+                if(stk.top() == 'A') break;
+                stk.pop();
+            }
+        }
+        if(stk.size() == 0) cnt++;
     }
 
     cout << cnt << "\n";
