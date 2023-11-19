@@ -16,18 +16,9 @@ int main() {
         stack<char> stk;
 
         for(int j=0; j < temp.length(); j++){
-            stk.push(temp[i]);    
-            
-            if(temp[i] == 'A') a++;
-            else if (temp[i] == 'B') b++;
-
-            if(a == 2) {
-                stk.pop();
-                if(stk.top() == 'B') break;
-                stk.pop();
-            } else if(b == 2) {
-                stk.pop();
-                if(stk.top() == 'A') break;
+            if(stk.empty() || stk.top() != temp[j]){
+                stk.push(temp[j]);
+            } else if (stk.top() == temp[j]){
                 stk.pop();
             }
         }
