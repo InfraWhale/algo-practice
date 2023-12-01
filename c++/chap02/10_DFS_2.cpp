@@ -1,8 +1,8 @@
-#include<bits/stdc++.h> // 맵과 방향벡터 3 정답
+#include<bits/stdc++.h> // DFS 문제
 using namespace std;
 
-const int n = 3;
-int a [n][n], visited[n][n];
+int n, m, cnt;
+int a [104][104], visited[104][104];
 
 const int dy[] = {-1, 0, 1, 0};
 const int dx[] = {0, 1, 0, -1};
@@ -24,14 +24,26 @@ void go(int y, int x) {
 
 int main(){
 
+	cin >> n >> m;
+
 	for(int i = 0; i < n; i++) {
-		for(int j = 0; j < n; j++) {
-			if(i == 0 && j == 0) a[0][0] = 1;
-			else cin >> a[i][j];
+		for(int j = 0; j < m; j++) {
+		cin >> a[i][j];
 		}
 	}
 
-	go(0,0);
+
+
+	for(int i = 0; i < n; i++) {
+		for(int j = 0; j < n; j++) {
+			if(a[i][j] && visited[i][j] == 0) {
+				cnt ++;
+				go(i, j);
+			}
+		}
+	}
+
+	cout << cnt << "\n";
 
 	return 0;
 } 
