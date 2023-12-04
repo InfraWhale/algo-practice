@@ -34,7 +34,7 @@ int main(){
     for(int i : nodeList){
         cout << i << " : " << visited[i] << '\n';
     }
-    cout << "10 ~ 24 shortest distance : " << visited[24] - 1 << '\n';
+    cout << "10번으로부터 24번까지 최단거리는: " << visited[24] - 1 << '\n';
 
 	return 0;
 } 
