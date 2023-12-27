@@ -1,67 +1,41 @@
-#include<bits/stdc++.h> // 백준 1992 1E
+#include<bits/stdc++.h> // 백준 1992 2E - 분할정복 (정답부터 보고 풀었음)
 using namespace std;
 
-const int max_n = 101;
-int a[max_n][max_n], visited[max_n][max_n], n, m, k, area, cnt, ret;
-vector<int> v;
+char a[68][68];
+int n;
 
-int dy[4] = {-1, 0, 1, 0};
-int dx[4] = {0, 1, 0, -1};
-
-void go(int y, int x) {
-	visited[y][x] = 1;
-	area++;
-	for(int i = 0; i < 4; i++) {
-		int ny = y + dy[i];
-		int nx = x + dx[i];
-		if(ny < 0 || ny >= m || nx < 0 || nx >= n) continue;
-		if(a[ny][nx] == 0) continue;
-		if(visited[ny][nx]) continue;
-		go(ny, nx);
+string div(int y, int x, int length) {
+	if (length == 1) return string(1, a[y][x]);
+		
+	char start = a[y][x];
+	string ret = "";
+	for(int i = y; i < y + length; i++) {
+		for(int j = x; j < x + length; j++) {
+			if (start != a[i][j]) {
+				ret += '(';
+				ret += div(y, x, length/2);
+				ret += div(y, x + length/2, length/2);
+				ret += div(y + length/2, x, length/2);
+				ret += div(y + length/2, x + length/2, length/2);
+				ret += ')';
+				return ret;
+			}
+		}
 	}
-	a[y][x]--;
-	return;
+	ret += string(1, a[y][x]);
+	return ret;
 }
 
 int main(){
-	cin >> m >> n >> k;
+	cin >> n;
 
-	for (int i = 0; i < m; i++) {
+	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
-			a[i][j] = 1;
+			cin >> a[i][j];
 		}
 	}
 
-	while(cnt < k) {
-		int tx1, ty1, tx2, ty2;
-		cin >> tx1 >> ty1 >> tx2 >> ty2;
-		for(int i = ty1; i < ty2; i++) {
-			for(int j = tx1; j < tx2; j++) {
-				a[i][j] = 0;
-			}
-		}
-		cnt++;
-	}
+	cout << div(0, 0, n) << "\n";
 
-	for(int i = 0; i < m; i++){
-		for(int j = 0; j < n; j++) {
-			if(visited[i][j] == 0 && a[i][j] != 0){
-			area = 0;
-			go(i, j);
-			if(area > 0) {
-				v.push_back(area);
-			}
-			ret++;
-			}
-		}
-	}
-	cout << ret << "\n";
-
-	sort(v.begin(),v.end());
-
-	for(int vv : v) {
-		cout << vv << " ";
-	}
-	
     return 0;
 }
