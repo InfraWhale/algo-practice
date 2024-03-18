@@ -14,7 +14,7 @@ int main() {
     for(char a : s)cnt[a]++;
     for(int i = 'Z'; i >= 'A'; i--){
         if(cnt[i]){
-            if(cnt[i] & 1){
+            if(cnt[i] & 1){ // 홀수 체크. & 연산자 해서 1이면 홀수, 0이면 짝수
                 mid = char(i); flag++;
                 cnt[i]--;
             }

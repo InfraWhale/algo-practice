@@ -9,8 +9,8 @@ int main() {
     cin.tie(NULL);
     cout.tie(NULL);
 
-    while(scanf("%d", &n) != EOF){
-        ll cnt = 1, ret = 1;
+    while(scanf("%d", &n) != EOF){ // 입력값이 더이상 없으면 결과가 EOF
+        ll cnt = 1, ret = 1; // cnt는 모든 자리가 1로 이루어진 수, ret는 현재 자릿수
         while(true){
             if(cnt % n == 0){
                 printf("%lld\n", ret);
