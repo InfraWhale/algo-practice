@@ -1,4 +1,4 @@
-#include<bits/stdc++.h> // 백준 2910 2G (추후에 개념이랑 같이 다시볼것-커스텀정렬, 맵)
+#include<bits/stdc++.h> // 백준 2910 2G (추후에 개념이랑 같이 다시볼것 - 커스텀정렬, 맵)
 using namespace std;
 typedef long long ll;
 
