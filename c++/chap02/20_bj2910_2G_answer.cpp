@@ -8,9 +8,9 @@ map<int, int> mp, mp_first;
 
 bool cmp(pair<int, int> a, pair<int, int> b) {
 	if (a.first == b.first) {
-		return mp_first[a.second] < mp_first[b.second]; // 오름차순
+		return mp_first[a.second] < mp_first[b.second]; // 큰게 뒤에 오도록
 	}
-	return a.first > b.first; // 내림차순
+	return a.first > b.first; // 큰게 앞에 오도록
 }
 
 int main(){
@@ -23,7 +23,7 @@ int main(){
 	for(int i = 0; i < n; i++) {
 		cin >> a[i];
 		mp[a[i]]++;
-		if(mp_first[a[i]] == 0) mp_first[a[i]] = i + 1;
+		if(mp_first[a[i]] == 0) mp_first[a[i]] = i + 1; // 수열에서 처음 나오는 수라면, 먼저 나온 수를 판단하기 위해 순서를 기록
 	}
 	for(auto it : mp) {
 		v.push_back({it.second, it.first});

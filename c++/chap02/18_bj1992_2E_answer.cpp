@@ -12,7 +12,7 @@ string quard(int y, int x, int size) {
 
 	for(int i = y; i < y + size; i++) {
 		for(int j = x; j < x + size; j++) {
-			if (b != a[i][j]) {
+			if (b != a[i][j]) { // 다른게 하나라도 있을 시, 4부분으로 쪼갬
 				ret += '(';
 				ret += quard(y, x, size/2);
 				ret += quard(y, x + size/2, size/2);
@@ -23,7 +23,7 @@ string quard(int y, int x, int size) {
 			}
 		}
 	}
-	return string(1, a[y][x]);
+	return string(1, a[y][x]); // 전부 같으면 같은걸로 반환
 }
 
 int main(){

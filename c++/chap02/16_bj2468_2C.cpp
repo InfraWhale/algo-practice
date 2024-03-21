@@ -29,7 +29,7 @@ int main(){
 		for (int j = 0; j < n; j++) {
 			cin >> a[i][j];
 			if(a[i][j] > m) {
-				m = a[i][j];
+				m = a[i][j]; // 주어진 높이의 최댓값을 구함 : m
 			}
 		}
 	}
@@ -42,13 +42,13 @@ int main(){
 			for(int j = 0; j < n; j++) {
 				if(visited[i][j] == 0 && a[i][j] != 0){
 					go(i, j);
-					temp++;
+					temp++; // 예비 최댓값
 				}
 			}
 		}
 
-		if (temp > ret) {
-			ret = temp;
+		if (temp > ret) { // 더 큰 값이 나오면 최댓값을 업데이트
+			ret = temp; 
 		}
 	}
 
