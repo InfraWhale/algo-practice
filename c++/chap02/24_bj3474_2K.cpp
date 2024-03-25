@@ -1,32 +1,42 @@
-#include<bits/stdc++.h> // 백준 3474 2K
+#include<bits/stdc++.h> // 백준 3474 2K (시간초과 too much)
 using namespace std;
 
-int n, m, a[104][104];
-string s;
+int a, n, t, two, five;
 
 int main(){
+	ios_base::sync_with_stdio(false);
+    cin.tie(NULL);cout.tie(NULL);
 	
-	cin >> n >> m;
-	
-	for (int i = 0; i < n; i++) {
-		cin >> s;
-		for (int j = 0; j < m; j++){
-			if(s[j] == '.')a[i][j] = -1;
-			else a[i][j] = 0;
-		}
-	}
-	
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < m; j++){
-			if(a[i][j] == 0) {
-				int cnt = 1;
-				while(a[i][j + 1] == -1){
-					a[i][j + 1] = cnt++;
-					j++;
-				}
-			}
-		}
-	}
+	cin >> t;
+	while(t--) {
+		cin >> n;
 
+		two = 0;
+		// for (int i = 2; i <= n; i+=2) {
+		// 	a = i;
+		// 	while(a % 2 == 0) {
+		// 		a /= 2;
+		// 		two++;
+		// 	}
+		// }
+		for(int i = 2; i <= n; i*=2) {
+			two += n/i; // 2로 나누어떨어지는 개수, 2*2로 나누어 떨어지는 개수, .....
+		}
+
+		five = 0;
+		// for (int i = 5; i <= n; i+=5) {
+		// 	a = i;
+		// 	while(a % 5 == 0) {
+		// 		a /= 5;
+		// 		five++;
+		// 	}
+		// }
+		for(int i = 5; i <= n; i*=5) {
+			five += n/i; // 5로 나누어떨어지는 개수, 5*5로 나누어 떨어지는 개수, .....
+		}
+
+		cout << min(two, five) << "\n";
+	
+	}
 	return 0;
 }
