@@ -22,8 +22,8 @@ int main(){
 	cin >> n;
 	for (int i = 0; i < n; i++) {
 		cin >> o >> s;
-		if(A > B) go(asum, s); // A가 이긴 경우
-		else if(B > A)go(bsum, s); // B가 이긴 경우
+		if(A > B) go(asum, s); // A가 B보다 앞서는 경우
+		else if(B > A)go(bsum, s); // B가 A보다 앞서는 경우
 		o == 1 ? A++ : B++;
 		prev = s;
 	}
