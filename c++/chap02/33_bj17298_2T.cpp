@@ -1,34 +1,25 @@
 #include<bits/stdc++.h> // 백준 17298 2T (못품. 이게 짝짓기?)
 using namespace std;
 
-int n, pre, nge, flag, a[1000001];
+int n, cnt, a[1000001], b[1000001];
+stack<int> stk;
 
 int main(){
 	cin >> n;
 
-	for(int i = 1; i <= n; i++) {
-		cin >> a[i];
-	}
-	a[0] = 0;
-	pre = 0;
-	for (int i = 1; i <= n; i++) {
-		if(a[i] > a[i-1] || pre == -1) {
-			flag = 0;
-			for(int j = i; j <= n; j++) {
-				if(a[j] > a[i]) {
-					nge = a[j];
-					flag = 1;
-					break;
-				}
-			}
-			if(flag == 0) {
-				nge = -1;
-			}
-		} else {
-			nge = pre;
+	fill(&a[0], &a[0] + 1000001, -1);
+	for(int i = 0; i < n; i++) {
+		cin >> b[i];
+		while(stk.size() && b[i] > b[stk.top()]) {
+			a[stk.top()] = b[i];
+			stk.pop();
 		}
-		cout << nge << " ";
-		pre = nge;
+		stk.push(i);
 	}
+
+	for(int i = 0; i < n; i++) {
+		cout << a[i] << " ";
+	}
+
 	return 0;
 }
