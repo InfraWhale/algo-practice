@@ -1,4 +1,4 @@
-#include<bits/stdc++.h> // 백준 15686 1A 정답
+#include<bits/stdc++.h> // 백준 15686 3A 정답
 using namespace std;
 
 int n, m, a[54][54], result = 987654321;
