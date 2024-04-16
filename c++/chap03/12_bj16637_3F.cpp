@@ -1,4 +1,4 @@
-#include<bits/stdc++.h> // 백준 12869 3F (모르겠음...풀이 봐도 모르겠음)
+#include<bits/stdc++.h> // 백준 12869 3F (모르겠음...풀이 봐도 모르겠음 -> 품)
 using namespace std;
 
 int n, ret;
@@ -21,7 +21,8 @@ void go(int pos, int ans) {
 
 	go(pos + 1, oper(vChar[pos], ans, vInt[pos+1]));
 
-	if(pos <= vInt.size() - 3) {
+	// if(pos <= vInt.size() - 3) { // 이렇게 하면 OutOfBounds... 왜?
+	if(pos + 2 <= vInt.size() - 1) {
 		go(pos + 2, oper(vChar[pos], ans, oper(vChar[pos+1], vInt[pos+1], vInt[pos+2])));
 	}
 	return;
