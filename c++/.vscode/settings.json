@@ -1,3 +1,12 @@
 {
-    "C_Cpp.errorSquiggles": "disabled"
+    "C_Cpp.errorSquiggles": "disabled",
+    "files.associations": {
+        "utility": "cpp",
+        "initializer_list": "cpp",
+        "type_traits": "cpp",
+        "vector": "cpp",
+        "xstring": "cpp",
+        "xutility": "cpp",
+        "xlocinfo": "cpp"
+    }
 }
