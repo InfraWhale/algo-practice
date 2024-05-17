@@ -1,4 +1,4 @@
-#include<bits/stdc++.h> // 백준 15684 (어려웠음. 백트래킹 부분은 다른사람 풀이 참고)
+#include<bits/stdc++.h> // 백준 15684 3O (어려웠음. 백트래킹 부분은 다른사람 풀이 참고)
 using namespace std;
 
 int n, m, h, a[34][14], t1, t2;
