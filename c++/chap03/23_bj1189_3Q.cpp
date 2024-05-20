@@ -9,7 +9,7 @@ char a[10][10];
 
 void go(int y, int x, int dist) {
 	if(dist == k) {
-		if(y == (r - 1) && x == (c - 1)) {
+		if(y == 0 && x == (c - 1) && a[y][x] != 'T') {
 			ret++;
 		}
 		return;
@@ -38,8 +38,9 @@ int main() {
 			cin >> a[i][j];
 		}
 	}
-
-	go(0, 0, 1);
+	
+	visited[r-1][0] = 1;
+	go(r-1, 0, 1);
 
 	cout << ret;
 
