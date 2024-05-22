@@ -16,7 +16,7 @@ void go(int num) {
 
 int main() {   
 	for(int i = 1; i < n; i++) {
-		go(1 | (1 << i));
+		go(1 | (1 << i)); // 0011 0101 1001
 	}
 	
     return 0;
