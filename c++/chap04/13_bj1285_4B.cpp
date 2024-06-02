@@ -21,9 +21,10 @@ void go(int step) {
 
 	go(step + 1);
 
-	~a[step];
+	//~a[step]; 이렇게 했을땐 틀렸었음
+	a[step] = ~a[step];
 	go(step + 1);
-	//~a[step];
+	a[step] = ~a[step]; // 이게 들어가는게 더 맞다고 생각함
 
 	return;
 }
