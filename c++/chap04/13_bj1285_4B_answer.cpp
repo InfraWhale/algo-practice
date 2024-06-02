@@ -10,15 +10,16 @@ void go(int here) {
 		int sum = 0;
 		for(int i = 1; i <= (1 << (n-1)); i *= 2) {
 			int cnt = 0;
-			for(int j=1; j <=n; j++) if(a[j] & i)cnt;
-			sum += min(cnt, n-cnt);
+			for(int j=1; j <=n; j++) if(a[j] & i)cnt++; // 각 행의 첫번째..두번째..세번째 순으로 비트마스킹
+			sum += min(cnt, n-cnt); // 뒷면이 더 적은 경우 픽 
 		}
 		ret = min(ret, sum);
 		return;
 	}
-	go(here + 1);
-	a[here] = ~a[here];
-	go(here + 1);
+	go(here + 1); // 안뒤집는 경우
+
+	a[here] = ~a[here]; // 맨 앞이 뒤집혀서 -가 붙긴 하는데, 쓰는건 어짜피 맨 뒤부터 쓰니 상관없다.
+	go(here + 1); // 뒤집는 경우
 }
 
 int main() {
@@ -26,16 +27,16 @@ int main() {
 	cin.tie(NULL);
 	cout.tie(NULL); 
 	cin >> n;
-	for(int i = 0; i < n; i++) {
+	for(int i = 1; i <= n; i++) {
 		cin >> s;
 		int value = 1;
 		for(int j = 0; j < s.size(); j++) {
-			if(s[j] == 'T')a[i] |= value;
+			if(s[j] == 'T')a[i] |= value; // 문자열 배열을 하나의 숫자로 만듬
 			value *= 2;
 		}
 	}
 
-	for(int i = 1; i <= n; i++) cout << a[i] << " ";
+	//for(int i = 1; i <= n; i++) cout << a[i] << " ";
 	go(1);
 	cout << ret << "\n";
 
