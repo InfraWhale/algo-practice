@@ -1,7 +1,11 @@
-#include<bits/stdc++.h> // 백준 1062 4F
+#include<bits/stdc++.h> // 백준 1062 4F (알듯 하면서도 모르겠음)
 using namespace std;
 
 int n, k, bit, cnt;
+
+void go(int depth) {
+
+}
 
 int main() {
 	ios_base::sync_with_stdio(false);
