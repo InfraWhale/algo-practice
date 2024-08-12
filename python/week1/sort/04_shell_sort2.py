@@ -1,22 +1,26 @@
-# 셸 정렬 알고리즘 구현
+# 셸 정렬 알고리즘 구현(h*3 + 1) 수열 사용
+# 이렇게 하는 이유 
+
 
 from typing import MutableSequence
 
 def shell_sort(a :MutableSequence) -> None :
     
     n = len(a)
-    h = n // 2
+    
+    h = 1
+    while h < n // 9 :
+        h = h * 3 + 1
+    
     while h > 0:
         for i in range(h, n) :
             j = i - h
             tmp = a[i]
-            # 아래처럼 코딩한 이유 : 홀수이면 마지막 하나 남으니깐 그거까지 교환해주려고
-            # 그냥 insertion sort 썼다고 이해하자
             while j >= 0 and a[j] > tmp:
                 a[j + h] = a[j]
                 j -= h
             a[j + h] = tmp
-        h //= 2
+        h //= 3
     
 if __name__ == '__main__':
     print('셸 정렬을 수행합니다.')
