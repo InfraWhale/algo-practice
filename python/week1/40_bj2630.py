@@ -50,4 +50,3 @@ go(0, 0, n)
 
 print(w_cnt)
 print(b_cnt)
-
