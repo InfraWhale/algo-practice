@@ -1,3 +1,5 @@
+# 정답인 코드
+
 import sys
 sys.setrecursionlimit(10**6)
 a, b, c = map(int,sys.stdin.readline().split())
