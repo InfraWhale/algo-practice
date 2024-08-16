@@ -2,7 +2,7 @@ import sys
 
 n = int(sys.stdin.readline())
 k = int(sys.stdin.readline())
-arr = [sys.stdin.readline().strip() for i in range(n)]
+arr = [sys.stdin.readline().strip() for i in range(n)] #comprehension 문법
 use = [0 for i in range(n)]
 dic = {}
 

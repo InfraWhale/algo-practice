@@ -1,3 +1,5 @@
+# 살짝 헤맴
+
 import sys
 w_max, h_max = 0, 0
 w_end, h_end = map(int,sys.stdin.readline().split())

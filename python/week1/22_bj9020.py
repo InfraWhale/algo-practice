@@ -1,3 +1,5 @@
+# 살짝 헤맴
+
 import sys, math
 
 a = int(sys.stdin.readline())
