@@ -29,8 +29,8 @@ def div_and_con(start, end):
     
     mid = (start + end) // 2
     
-    left = div_and_con(start, mid-1)
-    right = div_and_con(mid+1, end)
+    left = div_and_con(start, mid)
+    right = div_and_con(mid, end)
     
     min_dist = min(left, right)
     
