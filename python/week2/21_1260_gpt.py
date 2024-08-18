@@ -1,58 +1,62 @@
 import sys
 from collections import deque
-# 틀렸습니다 5%
-n, m, v = map(int, sys.stdin.readline().split())
 
-arr = [[] for _ in range (n+1)]
-visited = [0]*(n+1)
+input = sys.stdin.readline
 
-for _ in range (m) :
-    a, b = map(int, sys.stdin.readline().split())
+n, m, v = map(int, input().split())
+
+# 인접 리스트 초기화
+arr = [[] for _ in range(n+1)]
+
+# 그래프 입력
+for _ in range(m):
+    a, b = map(int, input().split())
     arr[a].append(b)
     arr[b].append(a)
-    
-for i in range (n) :
+
+# 각 정점에 대해 인접 리스트 정렬
+for i in range(1, n+1):
     arr[i].sort()
 
-arr_a = []
-arr_b = []
-
-def dfs(start) :
-    dfs_visited = [0]*(n+1)
-    stack = deque([start])
-    while stack :
+def dfs(start):
+    stack = [start]
+    dfs_visited = [False] * (n+1)
+    result = []
+    
+    while stack:
         now = stack.pop()
-        if dfs_visited[now] == 1 : 
+        if dfs_visited[now]:
             continue
         
-        arr_a.append(now)
-        if len(arr_a) == n :
-            break
+        result.append(now)
+        dfs_visited[now] = True
         
-        dfs_visited[now] = 1
-        for it in reversed(arr[now]) :
-            stack.append(it)
-    return
+        # 인접 리스트를 역순으로 탐색
+        for neighbor in reversed(arr[now]):
+            if not dfs_visited[neighbor]:
+                stack.append(neighbor)
+                
+    return result
 
-def bfs(start) :
-    bfs_visited = [0]*(n+1)
-    que = deque([start])
-    while que :
-        now = que.popleft()
-        if bfs_visited[now] == 1 : 
+def bfs(start):
+    queue = deque([start])
+    bfs_visited = [False] * (n+1)
+    result = []
+    
+    while queue:
+        now = queue.popleft()
+        if bfs_visited[now]:
             continue
         
-        arr_b.append(now)
-        if len(arr_b) == n :
-            break
+        result.append(now)
+        bfs_visited[now] = True
         
-        bfs_visited[now] = 1
-        for it in arr[now] :
-            que.append(it)
-    return
+        for neighbor in arr[now]:
+            if not bfs_visited[neighbor]:
+                queue.append(neighbor)
+                
+    return result
 
-dfs(v)
-bfs(v)
-
-print(arr_a)
-print(arr_b)
+# 결과 출력
+print(" ".join(map(str, dfs(v))))
+print(" ".join(map(str, bfs(v))))

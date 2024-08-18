@@ -1,5 +1,5 @@
 import sys
-# 개념 봐도 모르겠음
+# 개념 봐도 모르겠음 -> 구현실패
 v, e = map(int, sys.stdin.readline().split())
 
 parents = [i for i in range 1, v+1]
