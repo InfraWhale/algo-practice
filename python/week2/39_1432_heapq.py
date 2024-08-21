@@ -1,5 +1,6 @@
 import sys
-from collections import deque
+import heapq
+# 답을 봐도 모르겠다...!
 
 n = int(sys.stdin.readline())
 
@@ -13,30 +14,21 @@ for i in range (n) :
             arr_out[i+1].append(j+1)
             arr_in[j+1] += 1
 
-print(arr_out)
-print(arr_in)
-
 def topology_sort() :
-    que = deque()
+    que = []
     
     for it in range (1, n+1) :
         if arr_in[it] == 0 :
             que.append(it)
     while que :
-        
         for _ in range (len(que)) :
-            temp =[]
-            now = que.popleft()
+            now = heapq.heappop(que)
             ret_arr.append(now)
             
             for next in arr_out[now] :
                 arr_in[next] -= 1
                 if arr_in[next] == 0 :
-                    temp.append(next)
-            if temp :
-                temp.sort()
-                for it in temp :
-                    que.append(it)
+                    heapq.heappush(que, next)
     return
 
 topology_sort()

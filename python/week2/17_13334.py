@@ -1,8 +1,12 @@
 import sys
 import heapq
-#모르겠음!!!
 
 n = int(sys.stdin.readline())
+
+arr_pp = []
+
+for _ in range(n)
+
 min_heap = []
 cnt = 0
 
