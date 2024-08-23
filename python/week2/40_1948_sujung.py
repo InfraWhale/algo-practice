@@ -1,6 +1,6 @@
 import sys
 from collections import deque
-# 19% 틀렸습니다
+# 19% 틀렸습니다 -> 맞았습니다
 n = int(sys.stdin.readline())
 m = int(sys.stdin.readline())
 
@@ -33,10 +33,7 @@ def topology_sort() :
             
             elif next_cost+ arr_max_cost[now_idx] == arr_max_cost[next_idx] :
                 arr_max_cost_road[next_idx] = arr_max_cost_road[next_idx] + arr_max_cost_road[now_idx] + [(now_idx, next_idx)]
-                arr_max_cost_road[next_idx] = list(set(arr_max_cost_road[next_idx]))
-            # print("now_idx, next_idx : ", now_idx, next_idx)
-            # print("arr_max_cost : ", arr_max_cost)
-            # print("arr_max_cost_road : ", arr_max_cost_road)
+                arr_max_cost_road[next_idx] = list(set(arr_max_cost_road[next_idx])) # 중복제거 넣어주었음(위에도 넣어주면 시간초과)
             
             arr_in[next_idx] -= 1
             if arr_in[next_idx] == 0 :
