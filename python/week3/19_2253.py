@@ -1,7 +1,7 @@
 import sys
 from collections import deque
 
-# 80% 틀렸습니다. -> 단순히 점프 수를 저장하는 것이 아니라, 얼마의 스피드로 통과했는지도 반영해야 할 것 같다.
+# 80% 틀렸습니다. -> 단순히 점프 수를 저장하는 것이 아니라, dp에 얼마의 스피드로 통과했는지도 반영해야 할 것 같다.
 
 INF = float('Inf')
 n, m = map(int, sys.stdin.readline().split())

@@ -9,7 +9,6 @@ for _ in range(N):
 
 dp = {}
 
-
 def DFS(now, visited):
     # 모든 도시를 방문한 경우
     if visited == (1 << N) - 1:

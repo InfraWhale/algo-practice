@@ -13,12 +13,11 @@ for j in range(1, n) :
         temp = float('Inf')
         
         for k in range(1, j) :
-            first_val, first_a , first_b = dp[i][i]
-            second_val, second_a, second_b = dp[i+1][i+j]
+            first_val, first_a , first_b = dp[i][i+(j-1)]
+            second_val, second_a, second_b = dp[i+j][i+j]
             temp = min(first_val + second_val + first_a * second_a * second_b, temp)
         
-        first_val, first_a , first_b = dp[i][i+(j-1)]
-        second_val, second_a, second_b = dp[i+j][i+j]
+
         
         temp2 = first_val + first_a * second_a * second_b
         
