@@ -3,7 +3,7 @@ import sys
 n = int(sys.stdin.readline())
 arr = list(map(int, sys.stdin.readline().split()))
 
-# 나중에 답 한번 보면 좋을거같다.
+# 나중에 답 한번 보면 좋을거같다. -> 다른 풀이도 비슷한듯?
 
 dp = [[0 for x in range(n)] for y in range(n)]
 

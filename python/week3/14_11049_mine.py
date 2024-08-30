@@ -1,5 +1,5 @@
 import sys
-
+# 바로 틀렸습니다 나온 코드
 n = int(sys.stdin.readline())
 
 dp = [[(0, 0, 0) for x in range(n)] for y in range(n)]
