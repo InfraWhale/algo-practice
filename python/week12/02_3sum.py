@@ -1,35 +1,35 @@
-import sys
-# 메모리초과 ... 바꿔봐도 메모리초과
-str1 = sys.stdin.readline().strip()
-str2 = sys.stdin.readline().strip()
+# 답봄
 
-len1 = len(str1)
-len2 = len(str2)
+class Solution:
+    def threeSum(self, nums: list[int]) -> list[list[int]]:
+        ret = []
+        nums.sort()
 
-arr = [[(-1, -1) for x in range (len2)] for y in range (len1)]
-
-max_len = 0
-max_pos = (-1, -1)
-
-for i in range (len1) :
-    for j in range (len2) :
-        if str1[i] == str2[j] :
+        for left in range (len(nums)-2) :
+            if left > 0 and nums[left] == nums[left - 1]:
+                continue
             
-            if arr[i-1][j-1] == (-1, -1) or i == 0 or j == 0 :
-                arr[i][j] = (i, i)
-                now_len = 1
-            else :
-                start = arr[i-1][j-1][0]
-                end = i
-                now_len = end - start + 1
-                arr[i][j] = (start, end)
-                
-            if  now_len > max_len :
-                max_len = now_len
-                max_pos = (i, j)
-                
-print(max_len)
+            mid = left + 1
+            right = len(nums)-1
 
-ret_start, ret_end = arr[max_pos[0]][max_pos[1]]
+            while (mid < right) :
+                sum = nums[left] + nums[mid] + nums[right]
+                if sum == 0 :
+                    ret.append([nums[left], nums[mid], nums[right]])
 
-print(str1[ret_start:ret_end+1])
+                    while mid < right and nums[mid] == nums[mid + 1]:
+                        mid += 1
+                    while mid < right and nums[right] == nums[right - 1]:
+                        right -= 1
+                    
+                    mid += 1
+                    right -= 1
+                elif sum < 0:
+                    mid += 1
+                else:
+                    right -= 1
+        return ret
+    
+solution = Solution()
+nums = [-1,0,1,2,-1,-4]
+print(solution.threeSum(nums))
