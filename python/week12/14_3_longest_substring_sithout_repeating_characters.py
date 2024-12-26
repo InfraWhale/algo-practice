@@ -27,5 +27,4 @@ class Solution:
 
 solution = Solution()
 s = "abcabcbb"
-print(solution.lengthOfLongestSubstring(s))
-    
+print(solution.lengthOfLongestSubstring(s)) ㅐㅓㅓ머멈
