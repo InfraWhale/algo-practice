@@ -1,5 +1,5 @@
 #include<bits/stdc++.h> // 백준 1005
-// 54% 틀렸습니다. -> 벡터도 초기화하도록 변경
+// 54% 틀렸습니다. -> 벡터도 초기화하도록 변경 : 맞았습니다
 using namespace std;
 
 int t, n, k, x, y, w;
