@@ -1,11 +1,7 @@
-// 채점 결과
-// 정확성: 85.0
-// 합계: 85.0 / 100.0
-
 class Solution {
     
     int[] discountRate = {40, 30, 20, 10};
-    double[] discountVal = {0.6, 0.7, 0.8, 0.9};
+    int[] discountVal = {6, 7, 8, 9};
     int[][] discountPrice;
     int[] caseArr, sEmoticons;
     int emoLen, userLen;
@@ -22,7 +18,8 @@ class Solution {
         discountPrice = new int[emoLen][4];
         for(int i = 0; i < emoLen; i++) {
             for(int j = 0; j < 4; j++) {
-                discountPrice[i][j] = (int) (sEmoticons[i] * discountVal[j]);
+                // 부동소수점 연산때문에 틀렸었음
+                discountPrice[i][j] = sEmoticons[i] / 10 * discountVal[j];
             }
         }
         
