@@ -1,3 +1,5 @@
+// 리팩토링 버전
+
 import java.util.*;
 
 class Solution {
